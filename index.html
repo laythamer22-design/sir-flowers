@@ -28,6 +28,8 @@
     font-family:"Cairo",system-ui,sans-serif;
     background:#1a0f14;color:var(--text);
     min-height:100vh;overflow-x:hidden;
+    word-break:normal;overflow-wrap:break-word;hyphens:none;
+    letter-spacing:normal;text-rendering:optimizeLegibility;
   }
 
   .universe{
@@ -157,10 +159,10 @@
   .sec-head{margin-bottom:20px;position:relative;z-index:1;text-align:center}
   .sec-tag{
     display:inline-block;font-family:"Tajawal",sans-serif;
-    font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+    font-size:11px;font-weight:800;
     color:var(--rose-light);padding:5px 14px;border-radius:999px;
     background:var(--rose-dim);border:1px solid rgba(232,67,147,.25);
-    margin-bottom:10px;
+    margin-bottom:10px;letter-spacing:normal;
   }
   .sec-head h2{font-size:20px;font-weight:900;color:#fff;line-height:1.5;margin-bottom:6px}
   .sec-head p{font-size:13px;color:var(--muted);line-height:1.75}
@@ -217,7 +219,7 @@
   }
   .phone-label{
     display:block;font-size:12px;font-weight:700;color:var(--muted);
-    margin-bottom:10px;letter-spacing:.5px;
+    margin-bottom:10px;
   }
   .phone-number{
     display:block;text-decoration:none;font-size:26px;font-weight:900;
@@ -332,7 +334,7 @@
 
       <section class="lux-section">
         <header class="sec-head">
-          <span class="sec-tag">الكتalog</span>
+          <span class="sec-tag">الباقات</span>
           <h2>منتجاتنا</h2>
           <p>تشكيلة متنوعة من باقات الورد</p>
           <div class="sec-line"></div>
@@ -442,7 +444,7 @@ const CONFIG = {
     { icon: "🌸", title: "باقة يومية", desc: "عروض خاصة يومية", price: "من 15,000 د.ع" }
   ],
   bookingSteps: [
-    "اختر الباقة من الكتalog أو أرسل صورة للباقة التي تريدها",
+    "اختر الباقة من قائمة المنتجات أو أرسل صورة للباقة التي تريدها",
     "تواصل معنا عبر واتساب أو اتصل على رقم المتجر",
     "حدّد تاريخ ووقت التسليم والعنوان",
     "ادفع واستلم باقتك في الموعد المحدد 🌹"
