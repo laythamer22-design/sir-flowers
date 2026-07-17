@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>باركود سر فلورز — Sir Flowers</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Cairo",sans-serif;
+    background:#1a0f14;min-height:100vh;
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .bg{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232,67,147,.22), transparent),
+      linear-gradient(180deg,#1a0f14,#2a1520);
+  }
+  .card{
+    position:relative;z-index:1;width:100%;max-width:420px;border-radius:28px;overflow:hidden;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(24px);box-shadow:0 32px 80px rgba(0,0,0,.5);
+    text-align:center;
+  }
+  .head{
+    padding:28px 20px 22px;
+    background:linear-gradient(135deg,rgba(232,67,147,.35),rgba(74,222,128,.12));
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .head .tag{
+    display:inline-block;font-size:11px;font-weight:700;color:#ff8ec7;
+    background:rgba(232,67,147,.15);border:1px solid rgba(232,67,147,.3);
+    padding:5px 14px;border-radius:999px;margin-bottom:12px;
+  }
+  .head .store-logo{
+    width:92px;height:92px;border-radius:50%;object-fit:cover;margin:0 auto 14px;
+    border:3px solid rgba(255,255,255,.75);
+    box-shadow:0 10px 28px rgba(232,67,147,.35);
+    display:block;
+  }
+  .head h1{
+    font-size:26px;font-weight:800;color:#fff;line-height:1.5;margin-bottom:8px;
+    background:linear-gradient(135deg,#fff,#ff8ec7);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .head p{font-size:13px;color:#d4b8c0;line-height:1.7}
+  .body{padding:24px 22px 30px}
+  .qr-box,.barcode-wrap.tap-link{
+    display:block;background:#fff;border-radius:20px;padding:18px;margin:0 auto 16px;
+    box-shadow:0 12px 40px rgba(0,0,0,.3);max-width:260px;
+    text-decoration:none;position:relative;cursor:pointer;
+    transition:transform .15s,box-shadow .15s;
+    -webkit-tap-highlight-color:rgba(232,67,147,.25);
+    touch-action:manipulation;
+  }
+  .barcode-wrap.tap-link{border-radius:14px;padding:12px 16px;max-width:320px}
+  .qr-box:active,.barcode-wrap.tap-link:active{transform:scale(.97)}
+  .qr-box img,.barcode-wrap.tap-link img{width:100%;height:auto;display:block;pointer-events:none}
+  .qr-tap-hint{
+    display:block;margin-top:10px;font-size:11px;font-weight:800;color:#e84393;
+    text-align:center;
+  }
+  .scan-note{font-size:13px;color:#d4b8c0;margin-bottom:10px;line-height:1.7}
+
+  .direct-box{
+    margin:0 0 16px;padding:16px;border-radius:18px;text-align:center;
+    background:rgba(232,67,147,.08);border:1px solid rgba(232,67,147,.22);
+  }
+  .direct-box p{font-size:12px;color:#d4b8c0;line-height:1.75;margin-bottom:12px}
+  .direct-link{
+    display:block;padding:14px 12px;border-radius:14px;text-decoration:none;
+    font-size:14px;font-weight:800;color:#fff;margin-bottom:8px;
+    background:linear-gradient(135deg,#e84393,#ff8ec7);
+    box-shadow:0 8px 24px rgba(232,67,147,.28);
+    transition:transform .15s;
+  }
+  .direct-link:active{transform:scale(.97)}
+  .url-text{
+    display:block;font-size:10px;color:#a88a96;word-break:break-all;
+    direction:ltr;line-height:1.6;padding:8px 4px 0;
+  }
+  .btn.copy{
+    width:100%;margin-top:8px;padding:11px;border:none;border-radius:12px;
+    font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;
+    background:rgba(255,255,255,.08);color:#f0d8de;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .btn.copy:active{transform:scale(.98)}
+  .copy-ok{font-size:11px;color:#ff8ec7;margin-top:6px;min-height:16px}
+
+  .social-label{font-size:13px;color:#a88a96;font-weight:700;margin:8px 0 12px}
+  .social{display:flex;gap:16px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+  .soc{
+    width:60px;height:60px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;text-decoration:none;transition:transform .15s;
+  }
+  .soc:active{transform:scale(.92)}
+  .soc svg{width:30px;height:30px;fill:#fff}
+  .soc.fb{background:linear-gradient(135deg,#1877f2,#0d65d9);box-shadow:0 8px 24px rgba(24,119,242,.35)}
+  .soc.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);box-shadow:0 8px 24px rgba(214,41,118,.3)}
+  .soc.wa{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 8px 24px rgba(37,211,102,.3)}
+  .soc.pending{opacity:.4;filter:grayscale(.4);pointer-events:none}
+
+  .label{
+    font-size:13px;color:#a88a96;font-weight:700;margin:16px 0 8px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .label::before,.label::after{
+    content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+  }
+  .barcode-wrap{background:rgba(255,255,255,.95);border-radius:14px;padding:12px 16px;margin:0 auto;max-width:320px}
+  .barcode-wrap img{width:100%;height:auto;display:block}
+  .hint{
+    font-size:12px;color:#a88a96;margin-top:18px;line-height:1.8;
+    padding:14px;background:rgba(0,0,0,.2);border-radius:14px;
+    border:1px dashed rgba(255,255,255,.08);
+  }
+  .hint strong{color:#ff8ec7}
+  .actions{display:flex;gap:10px;margin-top:18px}
+  .btn{
+    flex:1;padding:13px;border:none;border-radius:14px;font-size:14px;
+    font-weight:800;font-family:inherit;cursor:pointer;transition:transform .15s;
+  }
+  .btn:active{transform:scale(.96)}
+  .btn.print{background:linear-gradient(135deg,#ff8ec7,#e84393);color:#fff;box-shadow:0 8px 24px rgba(232,67,147,.3)}
+  .btn.open{background:rgba(255,255,255,.08);color:#f0d8de;border:1px solid rgba(255,255,255,.12)}
+  @media print{
+    body{background:#fff;padding:0}
+    .bg{display:none}
+    .card{box-shadow:none;border:1px solid #ddd;background:#fff;max-width:100%}
+    .head{background:#e84393;-webkit-text-fill-color:#fff}
+    .head h1{-webkit-text-fill-color:#fff;background:none;color:#fff}
+    .direct-box{background:#fdf2f8;border:1px solid #fbcfe8}
+    .direct-box p,.url-text{color:#555}
+    .direct-link{color:#fff}
+    .btn.copy,.copy-ok,.qr-tap-hint,.actions{display:none}
+    .head p,.hint,.scan-note,.social-label{color:#555}
+    .soc.pending{opacity:1;filter:none}
+  }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="card">
+    <div class="head">
+      <span class="tag">✿ Sir Flowers</span>
+      <img class="store-logo" src="sir_flowers_logo.jpg" alt="شعار سر فلورز">
+      <h1 translate="no">سر فلورز</h1>
+      <p>باقات ورد فاخرة — هدايا — تنسيقات لكل المناسبات<br>بغداد — السيدية — شارع العلوة</p>
+    </div>
+    <div class="body">
+      <a class="qr-box" id="qr-link" href="https://laythamer22-design.github.io/sir-flowers/" rel="noopener" aria-label="افتح صفحة المتجر">
+        <img src="BARCODE_USE_THIS.png" alt="رمز QR لسر فلورز">
+        <span class="qr-tap-hint">👆 اضغط على الباركود لفتح الصفحة</span>
+      </a>
+      <p class="scan-note">على الشاشة: <strong>اضغط الباركود</strong> أو الزر أدناه<br>على الورق المطبوع: امسح بالكاميرا<br><span style="font-size:11px;color:#a88a96">ملاحظة: صورة PNG وحدها لا تُضغط — افتح رابط البطاقة</span></p>
+
+      <div class="direct-box">
+        <p>لا تحتاج هاتفاً ثانياً — افتح صفحة المتجر مباشرة</p>
+        <a class="direct-link" id="page-link" href="https://laythamer22-design.github.io/sir-flowers/" rel="noopener">🌸 افتح صفحة سر فلورز</a>
+        <span class="url-text" id="page-url"></span>
+        <button class="btn copy" id="copy-link" type="button">📋 نسخ الرابط</button>
+        <p class="copy-ok" id="copy-ok"></p>
+      </div>
+
+      <p class="social-label">تابعنا على</p>
+      <div class="social">
+        <a class="soc ig pending" id="card-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a class="soc wa pending" id="card-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+      </div>
+
+      <div class="label">باركود Code128 — اضغط أيضاً</div>
+      <a class="barcode-wrap tap-link" id="barcode-link" href="https://laythamer22-design.github.io/sir-flowers/" rel="noopener" aria-label="افتح صفحة المتجر">
+        <img src="barcode_sir_flowers.png" alt="باركود سر فلورز">
+      </a>
+
+      <p class="hint" id="cardHint">
+        <strong>للمسح:</strong> استخدم كamera هاتف آخر أو بطاقة مطبوعة<br>
+        <strong>بدون مسح:</strong> اضغط «افتح صفحة سر فلورز» أو انسخ الرابط<br>
+        المعرّف: <strong>SIR-FLOWERS-001</strong>
+      </p>
+      <div class="actions">
+        <button class="btn print" onclick="window.print()">🖨️ طباعة</button>
+        <button class="btn open" id="preview-btn" type="button">🌸 معاينة الصفحة</button>
+      </div>
+    </div>
+  </div>
+<script>
+const PAGE_URL = "https://laythamer22-design.github.io/sir-flowers/";
+
+["page-link", "qr-link", "barcode-link"].forEach(function(id) {
+  document.getElementById(id).href = PAGE_URL;
+});
+document.getElementById("page-url").textContent = PAGE_URL;
+document.getElementById("preview-btn").onclick = function() { window.location.href = PAGE_URL; };
+
+document.querySelectorAll("#qr-link, #barcode-link, #page-link").forEach(function(el) {
+  el.addEventListener("click", function(e) {
+    e.preventDefault();
+    window.location.href = PAGE_URL;
+  });
+});
+
+document.getElementById("copy-link").onclick = async function() {
+  const ok = document.getElementById("copy-ok");
+  try {
+    await navigator.clipboard.writeText(PAGE_URL);
+    ok.textContent = "✓ تم نسخ الرابط";
+  } catch (e) {
+    ok.textContent = "انسخ الرابط يدوياً من الأعلى";
+  }
+};
+
+const SOCIAL = {
+  instagram: "https://www.instagram.com/secret_fl0wers/",
+  whatsapp: "9647773445277"
+};
+function linkSocial(id, url) {
+  const el = document.getElementById(id);
+  if (url) { el.href = url; el.classList.remove("pending"); }
+}
+linkSocial("card-ig", SOCIAL.instagram);
+if (SOCIAL.whatsapp) {
+  document.getElementById("card-wa").href = "https://wa.me/" + SOCIAL.whatsapp;
+  document.getElementById("card-wa").classList.remove("pending");
+}
+if (!SOCIAL.instagram) {
+  document.getElementById("cardHint").innerHTML +=
+    "<br><br>أضف رابط إنستغرام في SOCIAL لتفعيل الأيقونة";
+}
+</script>
+</body>
+</html>

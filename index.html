@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="google" content="notranslate">
+<meta name="theme-color" content="#1a0f14">
+<meta name="description" content="سر فلورز — باقات ورد فاخرة، هدايا، وتنسيقات لكل المناسبات">
+<title>سر فلورز — Sir Flowers</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --text:#fff8f9;
+    --muted:#d4b8c0;
+    --rose:#e84393;
+    --rose-light:#ff8ec7;
+    --rose-dim:rgba(232,67,147,.18);
+    --sage:#4ade80;
+    --gold:#f0c987;
+    --gold-light:#ffe4b5;
+    --panel:rgba(26,15,20,.85);
+    --line:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Cairo",system-ui,sans-serif;
+    background:#1a0f14;color:var(--text);
+    min-height:100vh;overflow-x:hidden;
+  }
+
+  .universe{
+    position:fixed;inset:0;z-index:0;overflow:hidden;
+    background:#1a0f14;
+  }
+  .flower-bg{
+    position:absolute;inset:0;
+    background:url("flower_bg.jpg") center center / cover no-repeat;
+    transform:scale(1.04);
+    animation:bgDrift 18s ease-in-out infinite alternate;
+  }
+  @keyframes bgDrift{
+    from{transform:scale(1.04) translateY(0)}
+    to{transform:scale(1.08) translateY(-1.5%)}
+  }
+  .floral-overlay{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(26,15,20,.72) 0%, rgba(26,15,20,.55) 35%, rgba(26,15,20,.78) 100%),
+      radial-gradient(ellipse 80% 60% at 50% 20%, rgba(232,67,147,.12), transparent 55%);
+  }
+  .floral-vignette{
+    position:absolute;inset:0;
+    box-shadow:inset 0 0 120px rgba(0,0,0,.45);
+    pointer-events:none;
+  }
+
+  .wrap{
+    position:relative;z-index:1;max-width:480px;margin:0 auto;
+    min-height:100vh;padding-bottom:36px;
+  }
+
+  .hero{padding:44px 20px 28px;text-align:center;position:relative}
+
+  .logo-holo{
+    position:relative;width:156px;height:156px;margin:0 auto 22px;
+    animation:fadeUp .9s .1s ease both;
+  }
+  .logo-holo .ring{
+    position:absolute;inset:-6px;border-radius:50%;padding:3px;
+    background:linear-gradient(135deg,#e84393,#4ade80,#f0c987,#ff8ec7,#e84393);
+    background-size:300% 300%;animation:holoShift 4s ease infinite;
+  }
+  @keyframes holoShift{
+    0%,100%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+  }
+  .logo-holo .ring2{
+    position:absolute;inset:-14px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.08);
+    animation:spin 14s linear infinite;
+  }
+  .logo-holo .ring2::after{
+    content:"";position:absolute;top:-2px;left:50%;width:8px;height:8px;
+    border-radius:50%;background:var(--rose-light);
+    box-shadow:0 0 16px var(--rose-light);
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .logo-holo .pic{
+    position:relative;width:100%;height:100%;border-radius:50%;
+    background:#2a1520;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:inset 0 0 40px rgba(232,67,147,.1);
+  }
+  .logo-holo .pic img,.logo-holo .pic svg{width:100%;height:100%;object-fit:cover}
+  .logo-holo .pic::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 50%,rgba(232,67,147,.08) 100%);
+    pointer-events:none;
+  }
+
+  .floral-title{
+    font-size:30px;font-weight:900;line-height:1.4;margin-bottom:10px;
+    background:linear-gradient(135deg,#fff 0%,#ff8ec7 30%,#4ade80 55%,#f0c987 80%,#fff 100%);
+    background-size:200% auto;
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    animation:holoText 5s linear infinite,fadeUp .9s .2s ease both;
+  }
+  @keyframes holoText{to{background-position:200% center}}
+  .hero .tagline{
+    font-size:14px;color:var(--muted);line-height:1.8;max-width:340px;margin:0 auto 8px;
+    animation:fadeUp .9s .3s ease both;
+  }
+  .hero .en{
+    font-size:10px;letter-spacing:3px;text-transform:uppercase;
+    background:linear-gradient(90deg,#e84393,#4ade80,#f0c987);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    animation:fadeUp .9s .35s ease both;
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+  .store-tag{
+    display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+    padding:7px 16px;border-radius:999px;font-size:12px;font-weight:700;
+    color:var(--gold-light);background:rgba(240,201,135,.1);
+    border:1px solid rgba(240,201,135,.22);
+    animation:fadeUp .9s .4s ease both;
+  }
+  .store-tag::before{content:"✿";font-size:10px;color:var(--rose-light)}
+
+  .content{padding:0 18px 8px;display:flex;flex-direction:column;gap:18px}
+
+  .lux-section{
+    position:relative;border-radius:26px;padding:24px 22px;
+    background:var(--panel);backdrop-filter:blur(28px);
+    border:1px solid var(--line);
+    box-shadow:0 20px 50px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+    animation:fadeUp .8s ease both;
+  }
+  .lux-section::before{
+    content:"";position:absolute;top:0;right:22px;left:22px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--rose-light),transparent);
+    opacity:.55;
+  }
+  .lux-section.featured{
+    background:linear-gradient(160deg,rgba(42,21,32,.92),rgba(26,15,20,.92));
+    border-color:rgba(232,67,147,.22);
+    box-shadow:0 24px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(232,67,147,.08) inset;
+  }
+  .lux-section:nth-child(1){animation-delay:.42s}
+  .lux-section:nth-child(2){animation-delay:.55s}
+  .lux-section:nth-child(3){animation-delay:.68s}
+  .lux-section:nth-child(4){animation-delay:.81s}
+  .lux-section:nth-child(5){animation-delay:.94s}
+
+  .sec-head{margin-bottom:20px;position:relative;z-index:1;text-align:center}
+  .sec-tag{
+    display:inline-block;font-family:"Tajawal",sans-serif;
+    font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--rose-light);padding:5px 14px;border-radius:999px;
+    background:var(--rose-dim);border:1px solid rgba(232,67,147,.25);
+    margin-bottom:10px;
+  }
+  .sec-head h2{font-size:20px;font-weight:900;color:#fff;line-height:1.5;margin-bottom:6px}
+  .sec-head p{font-size:13px;color:var(--muted);line-height:1.75}
+  .sec-line{
+    width:48px;height:2px;margin:12px auto 0;border-radius:2px;
+    background:linear-gradient(90deg,transparent,var(--gold-light),transparent);
+  }
+
+  .bio-intro{
+    position:relative;z-index:1;font-size:14px;line-height:2;color:#f0d8de;
+    padding:18px 20px;border-radius:18px;text-align:center;
+    background:linear-gradient(135deg,rgba(232,67,147,.06),rgba(255,255,255,.02));
+    border:1px solid rgba(232,67,147,.12);
+  }
+
+  .catalog{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:1}
+  .cat-item{
+    border-radius:18px;overflow:hidden;
+    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+    transition:transform .2s,border-color .2s;
+  }
+  .cat-item:active{transform:scale(.97)}
+  .cat-item .thumb{
+    height:88px;display:flex;align-items:center;justify-content:center;
+    font-size:36px;
+    background:linear-gradient(135deg,rgba(232,67,147,.15),rgba(74,222,128,.08));
+  }
+  .cat-item .info{padding:12px 10px;text-align:center}
+  .cat-item .info h3{font-size:13px;font-weight:800;color:#fff;margin-bottom:4px;line-height:1.5}
+  .cat-item .info p{font-size:11px;color:var(--muted);line-height:1.6}
+  .cat-item .info .price{
+    display:block;margin-top:6px;font-size:12px;font-weight:800;
+    color:var(--gold-light);
+  }
+
+  .booking-steps{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+  .step{
+    display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:16px;
+    background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);
+  }
+  .step-num{
+    width:28px;height:28px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,var(--rose),var(--rose-light));
+    box-shadow:0 4px 12px rgba(232,67,147,.35);
+  }
+  .step-text{font-size:13px;font-weight:700;color:#f0e0e5;line-height:1.7;text-align:right;flex:1}
+
+  .contact-block{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+  .phone-card{
+    text-align:center;padding:20px 16px;border-radius:20px;
+    background:rgba(0,0,0,.28);border:1px solid rgba(232,67,147,.2);
+  }
+  .phone-label{
+    display:block;font-size:12px;font-weight:700;color:var(--muted);
+    margin-bottom:10px;letter-spacing:.5px;
+  }
+  .phone-number{
+    display:block;text-decoration:none;font-size:26px;font-weight:900;
+    letter-spacing:2px;color:var(--rose-light);direction:ltr;
+    font-family:"Tajawal","Cairo",sans-serif;
+    text-shadow:0 0 24px rgba(232,67,147,.25);
+    transition:color .2s;
+  }
+  .phone-number:active{color:#fff}
+
+  .wa-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:16px;border-radius:18px;text-decoration:none;color:#fff;
+    font-size:14px;font-weight:800;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    box-shadow:0 10px 28px rgba(37,211,102,.3);
+    transition:transform .15s;
+  }
+  .wa-btn:active{transform:scale(.96)}
+  .wa-btn svg{width:24px;height:24px;fill:#fff;flex-shrink:0}
+
+  .site-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px;border-radius:18px;text-decoration:none;color:#fff;
+    font-size:14px;font-weight:800;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    box-shadow:0 10px 28px rgba(99,102,241,.28);
+    transition:transform .15s;
+  }
+  .site-btn:active{transform:scale(.96)}
+
+  .address{
+    font-size:14px;line-height:1.9;color:#f0d8de;
+    padding:16px 18px;border-radius:16px;text-align:center;
+    background:rgba(0,0,0,.22);border:1px dashed rgba(232,67,147,.22);
+  }
+
+  .maps{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:relative;z-index:1}
+  .mbtn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:15px;border-radius:16px;text-decoration:none;color:#fff;
+    font-size:12px;font-weight:800;transition:transform .15s;
+  }
+  .mbtn:active{transform:scale(.95)}
+  .mbtn svg.map-ic{width:22px;height:22px;flex-shrink:0}
+  .mbtn.waze svg.map-ic{width:24px;height:24px}
+  .mbtn.gmaps{background:linear-gradient(135deg,#4285f4,#6366f1);box-shadow:0 8px 24px rgba(99,102,241,.3)}
+  .mbtn.waze{background:linear-gradient(135deg,#33ccff,#0891b2);box-shadow:0 8px 24px rgba(0,212,255,.25)}
+
+  .social{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+    position:relative;z-index:1;padding:6px 0 2px;
+  }
+  .soc{
+    width:68px;height:68px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;text-decoration:none;transition:transform .15s,box-shadow .2s;
+    border:2px solid rgba(255,255,255,.08);
+  }
+  .soc:active{transform:scale(.92)}
+  .soc svg{width:32px;height:32px;fill:#fff}
+  .soc.fb{background:linear-gradient(135deg,#1877f2,#0d65d9);box-shadow:0 10px 28px rgba(24,119,242,.35)}
+  .soc.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);box-shadow:0 10px 28px rgba(214,41,118,.3)}
+  .soc.wa{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 10px 28px rgba(37,211,102,.3)}
+  .soc.pending{opacity:.45;filter:grayscale(.3);pointer-events:none}
+  .social-hint{
+    position:relative;z-index:1;text-align:center;font-size:13px;color:var(--muted);
+    line-height:1.8;padding:10px 12px 0;
+  }
+
+  .footer{
+    text-align:center;padding:32px 18px 18px;font-size:11px;
+    color:rgba(212,184,192,.45);line-height:1.9;
+  }
+  .footer .glow{
+    background:linear-gradient(90deg,var(--rose-light),var(--gold-light),var(--sage));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    font-weight:800;
+  }
+</style>
+</head>
+<body>
+  <div class="universe">
+    <div class="flower-bg" aria-hidden="true"></div>
+    <div class="floral-overlay" aria-hidden="true"></div>
+    <div class="floral-vignette" aria-hidden="true"></div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="logo-holo">
+        <div class="ring2"></div>
+        <div class="ring"><div class="pic" id="logo-wrap">
+          <img id="store-logo" alt="سر فلورز" src="sir_flowers_logo.jpg">
+        </div></div>
+      </div>
+      <h1 class="floral-title" id="name" translate="no">سر فلورز</h1>
+      <p class="tagline" id="tagline">باقات ورد فاخرة — هدايا — تنسيقات لكل المناسبات</p>
+      <p class="en" id="name-en">SIR FLOWERS — PREMIUM FLORIST</p>
+      <div class="store-tag" id="location-tag">متجر ورد — العراق</div>
+    </header>
+
+    <main class="content">
+      <section class="lux-section">
+        <header class="sec-head">
+          <span class="sec-tag">نبذة</span>
+          <h2>عن سر فلورز</h2>
+          <p>حيث يتحول الورد إلى لغة مشاعر</p>
+          <div class="sec-line"></div>
+        </header>
+        <p class="bio-intro" id="bio"></p>
+      </section>
+
+      <section class="lux-section">
+        <header class="sec-head">
+          <span class="sec-tag">الكتalog</span>
+          <h2>منتجاتنا</h2>
+          <p>تشكيلة متنوعة من الباقات والهدايا</p>
+          <div class="sec-line"></div>
+        </header>
+        <div class="catalog" id="catalog"></div>
+      </section>
+
+      <section class="lux-section">
+        <header class="sec-head">
+          <span class="sec-tag">الحجز</span>
+          <h2>طريقة الحجز</h2>
+          <p>خطوات بسيطة لطلب باقتك</p>
+          <div class="sec-line"></div>
+        </header>
+        <div class="booking-steps" id="booking-steps"></div>
+      </section>
+
+      <section class="lux-section featured">
+        <header class="sec-head">
+          <span class="sec-tag">تواصل</span>
+          <h2>تواصل معنا</h2>
+          <p>للحجز والاستفسار</p>
+          <div class="sec-line"></div>
+        </header>
+        <div class="contact-block">
+          <div class="phone-card">
+            <span class="phone-label">اتصل بنا — اضغط للاتصال مباشرة</span>
+            <a class="phone-number" id="phone-display" href="tel:+9647773445277">0777 344 5277</a>
+          </div>
+          <a class="wa-btn" id="whatsapp-book" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <span>احجز عبر واتساب</span>
+          </a>
+          <a class="site-btn" id="website" href="#" target="_blank" rel="noopener">🌐 زيارة موقع المتجر</a>
+          <div class="address" id="address"></div>
+          <div class="maps">
+            <a class="mbtn gmaps" id="gmaps" href="#" target="_blank" rel="noopener" aria-label="Google Maps">
+              <svg class="map-ic" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#fff" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+                <path fill="#34a853" d="M12 2v7.5L17 9c0-2.76-2.24-5-5-5z" opacity=".9"/>
+                <path fill="#4285f4" d="M12 2C8.13 2 5 5.13 5 9l7 .5V2z" opacity=".85"/>
+                <path fill="#fbbc04" d="M5 9c0 1.2.28 2.33.78 3.34L12 9.5V2C8.13 2 5 5.13 5 9z" opacity=".85"/>
+                <path fill="#ea4335" d="M12 2v7.5l5.22 3.84C18.72 11.33 19 10.2 19 9c0-3.87-3.13-7-7-7z" opacity=".85"/>
+              </svg>
+              <span>Google Maps</span>
+            </a>
+            <a class="mbtn waze" id="waze" href="#" target="_blank" rel="noopener" aria-label="Waze">
+              <svg class="map-ic" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="11" fill="#fff"/>
+                <path fill="#33ccff" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-3.2 6.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm6.4 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-3.2 9.2c-2.35 0-4.35-1.45-5.15-3.5h10.3c-.8 2.05-2.8 3.5-5.15 3.5z"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="lux-section" id="socialCard">
+        <header class="sec-head">
+          <span class="sec-tag">تابعنا</span>
+          <h2>حسابات التواصل</h2>
+          <p>إنستغرام — واتساب</p>
+          <div class="sec-line"></div>
+        </header>
+        <div class="social">
+          <a class="soc ig pending" id="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a class="soc wa pending" id="whatsapp-social" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+        <p class="social-hint" id="socialHint">تابعنا للاطلاع على أحدث الباقات والعروض</p>
+      </section>
+    </main>
+
+    <div class="footer">
+      © <span id="year"></span> <span class="glow">سر فلورز — Sir Flowers</span><br>
+      <span id="footer-location">متجر ورد فاخر</span>
+    </div>
+  </div>
+
+<script>
+const CONFIG = {
+  nameAr: "سر فلورز",
+  nameEn: "SIR FLOWERS — PREMIUM FLORIST",
+  tagline: "باقات ورد فاخرة — هدايا — تنسيقات لكل المناسبات",
+  location: "بغداد — السيدية",
+  bio: "سر فلورز متجر متخصص في تنسيق الباقات والهدايا الوردية الفاخرة. نختار أجمل الورود الطبيعية ونصممها بذوق راقٍ يناسب أعياد الميلاد، الخطوبة، الزفاف، وكل لحظة تستحق أن تُهدى بوردة.",
+  phone: "+9647773445277",
+  whatsapp: "9647773445277",
+  whatsappMessage: "مرحباً سر فلورز، أريد حجز باقة ورد 🌹",
+  website: "https://sir-flowers.com",
+  address: "بغداد — السيدية — شارع العلوة — مقابل مدارس حلم الغد",
+  mapQuery: "سر فلورز، السيدية، شارع العلوة، مقابل مدارس حلم الغد، بغداد، العراق",
+  mapsUrl: "",
+  lat: 33.2545,
+  lng: 44.3618,
+  instagram: "https://www.instagram.com/secret_fl0wers/",
+  photo: "sir_flowers_logo.jpg",
+  catalog: [
+    { icon: "🌹", title: "باقة ورد طبيعي", desc: "ورود طازجة بتنسيق فاخر", price: "من 25,000 د.ع" },
+    { icon: "💐", title: "باقة عروس", desc: "تصميم رومانسي لليلة العمر", price: "من 45,000 د.ع" },
+    { icon: "🎁", title: "صندوق هدايا", desc: "ورد + حلويات + بطاقة", price: "من 35,000 د.ع" },
+    { icon: "🪻", title: "تنسيق مناسبات", desc: "زفاف — خطوبة — تخرج", price: "حسب الطلب" },
+    { icon: "🌷", title: "ورد صناعي فاخر", desc: "يبقى لسنوات", price: "من 20,000 د.ع" },
+    { icon: "🌸", title: "باقة يومية", desc: "عروض خاصة يومية", price: "من 15,000 د.ع" }
+  ],
+  bookingSteps: [
+    "اختر الباقة من الكتalog أو أرسل صورة للباقة التي تريدها",
+    "تواصل معنا عبر واتساب أو اتصل على رقم المتجر",
+    "حدّد تاريخ ووقت التسليم والعنوان",
+    "ادفع واستلم باقتك في الموعد المحدد 🌹"
+  ]
+};
+
+const LOGO_SVG = "data:image/svg+xml;utf8," + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">' +
+  '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+  '<stop offset="0%" stop-color="#e84393"/><stop offset="50%" stop-color="#4ade80"/>' +
+  '<stop offset="100%" stop-color="#f0c987"/></linearGradient></defs>' +
+  '<rect width="120" height="120" fill="#2a1520"/>' +
+  '<text x="60" y="72" text-anchor="middle" font-size="48" fill="url(#g)">✿</text></svg>');
+
+const telHref = s => "tel:" + String(s).replace(/[^0-9+]/g, "");
+function formatPhoneDisplay(num) {
+  let d = String(num).replace(/\D/g, "");
+  if (d.startsWith("964")) d = "0" + d.slice(3);
+  if (d.length === 11 && d.startsWith("0"))
+    return d.slice(0, 4) + " " + d.slice(4, 7) + " " + d.slice(7);
+  return num;
+}
+function waUrl(num, msg) {
+  const n = String(num).replace(/\D/g, "");
+  const text = encodeURIComponent(msg || "");
+  return "https://wa.me/" + n + (text ? "?text=" + text : "");
+}
+
+document.getElementById("name").textContent = CONFIG.nameAr;
+document.getElementById("name-en").textContent = CONFIG.nameEn;
+document.getElementById("tagline").textContent = CONFIG.tagline;
+document.getElementById("location-tag").textContent = CONFIG.location;
+document.getElementById("footer-location").textContent = CONFIG.location;
+document.getElementById("bio").textContent = CONFIG.bio;
+document.getElementById("address").textContent = CONFIG.address;
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const logoImg = document.getElementById("store-logo");
+if (logoImg) {
+  logoImg.onerror = function() {
+    this.onerror = null;
+    this.src = LOGO_SVG;
+  };
+}
+
+document.getElementById("catalog").innerHTML = CONFIG.catalog.map(function(c) {
+  return '<article class="cat-item"><div class="thumb">' + c.icon + '</div>' +
+    '<div class="info"><h3>' + c.title + '</h3><p>' + c.desc + '</p>' +
+    '<span class="price">' + c.price + '</span></div></article>';
+}).join("");
+
+document.getElementById("booking-steps").innerHTML = CONFIG.bookingSteps.map(function(t, i) {
+  return '<div class="step"><span class="step-num">' + (i + 1) + '</span><span class="step-text">' + t + '</span></div>';
+}).join("");
+
+const phoneDisplay = document.getElementById("phone-display");
+if (CONFIG.phone && phoneDisplay) {
+  phoneDisplay.href = telHref(CONFIG.phone);
+  phoneDisplay.textContent = formatPhoneDisplay(CONFIG.phone);
+}
+
+const waLink = waUrl(CONFIG.whatsapp, CONFIG.whatsappMessage);
+document.getElementById("whatsapp-book").href = waLink;
+
+const mapQuery = encodeURIComponent(CONFIG.mapQuery || CONFIG.address);
+const gmapsUrl = CONFIG.mapsUrl || ("https://www.google.com/maps/search/?api=1&query=" + mapQuery);
+const wazeUrl = "https://waze.com/ul?ll=" + CONFIG.lat + "," + CONFIG.lng + "&navigate=yes&q=" + mapQuery;
+document.getElementById("gmaps").href = gmapsUrl;
+document.getElementById("waze").href = wazeUrl;
+
+const siteEl = document.getElementById("website");
+if (CONFIG.website) {
+  siteEl.href = CONFIG.website;
+} else {
+  siteEl.classList.add("pending");
+  siteEl.style.opacity = ".45";
+  siteEl.style.pointerEvents = "none";
+}
+
+function wireSocial(el, url) {
+  if (url) {
+    el.href = url;
+    el.classList.remove("pending");
+  } else {
+    el.href = "#";
+    el.classList.add("pending");
+  }
+}
+wireSocial(document.getElementById("instagram"), CONFIG.instagram);
+wireSocial(document.getElementById("whatsapp-social"), waLink);
+
+const socialHint = document.getElementById("socialHint");
+if (!CONFIG.instagram) {
+  socialHint.textContent = "أضف رابط إنستغرام في CONFIG لتفعيل الأيقونة";
+}
+</script>
+</body>
+</html>
